@@ -6,18 +6,19 @@ import GlobalNavigation from './GlobalNavigation';
 import styles from './styles.scss';
 
 type Props = {
-  test: Object,
-  testActions: Object
+  auth: Function
 };
 
 class Header extends Component<Props> {
   props: Props;
 
   render() {
+    const { logout } = this.props.auth;
+
     return (
       <div className={styles.Container}>
         <LogoHeader />
-        <GlobalNavigation />
+        <GlobalNavigation logout={logout} />
       </div>
     );
   }
