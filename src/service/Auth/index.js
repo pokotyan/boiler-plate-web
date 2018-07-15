@@ -4,8 +4,14 @@ import history from '../../history';
 class Auth {
   auth0 = new auth0.WebAuth({
     domain: process.env.AUTH0_DOMAIN,
-    clientID: process.env.AUTH0_CLIENT_ID,
-    redirectUri: process.env.AUTH0_REDIRECT_URI,
+    clientID:
+      process.env.NODE_ENV === 'production'
+        ? process.env.AUTH0_CLIENT_ID_PROD
+        : process.env.AUTH0_CLIENT_ID,
+    redirectUri:
+      process.env.NODE_ENV === 'production'
+        ? process.env.AUTH0_REDIRECT_URI_PROD
+        : process.env.AUTH0_REDIRECT_URI,
     audience: process.env.AUTH0_AUDIENCE,
     responseType: 'token id_token',
     scope: 'openid'
@@ -42,7 +48,7 @@ class Auth {
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
-    history.replace('/login');
+    history.replace('/');
   };
 
   isAuthenticated = () => {

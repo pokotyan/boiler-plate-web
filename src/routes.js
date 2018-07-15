@@ -11,6 +11,7 @@ export default ({ auth }) => {
 
   // ヘッダーはログインしていたら常に表示させるのでSwitchの外側に置く
   // path="/"にexactはつけない。/のコンポーネントからさらにRouteが続いていくため。
+  // 認証していない状態で/に来るとLoginコンポーネントが表示される。認証後に/に来るとAppオブジェクトが表示される
   return (
     <React.Fragment>
       {isAuthenticated && <Header auth={auth} />}
@@ -20,7 +21,7 @@ export default ({ auth }) => {
         )}
         <Route
           exact
-          path="/login"
+          path="/"
           render={props => <Login {...props} auth={auth} />}
         />
         <Route

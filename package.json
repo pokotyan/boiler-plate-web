@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config ./webpack.dev.js --progress",
-    "build:prod": "webpack --config ./webpack.prod.js --progress",
+    "build": "NODE_ENV=development webpack --config ./webpack.dev.js --progress",
+    "build:prod": "NODE_ENV=production webpack --config ./webpack.prod.js --progress",
     "start": "webpack-dev-server --config ./webpack.dev.js",
     "flow": "flow",
     "fix": "eslint --fix src",
