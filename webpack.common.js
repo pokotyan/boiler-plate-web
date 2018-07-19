@@ -76,7 +76,9 @@ module.exports = {
       'process.env.AUTH0_REDIRECT_URI': JSON.stringify(
         process.env.AUTH0_REDIRECT_URI
       ),
-      'process.env.AUTH0_AUDIENCE': JSON.stringify(process.env.AUTH0_AUDIENCE)
+      'process.env.AUTH0_AUDIENCE': JSON.stringify(process.env.AUTH0_AUDIENCE),
+      'process.env.AUTH0_SECRET': JSON.stringify(process.env.AUTH0_SECRET),
+      'process.env.API_BASE_DEV': JSON.stringify(process.env.API_BASE_DEV)
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css'
